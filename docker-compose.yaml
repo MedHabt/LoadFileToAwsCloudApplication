@@ -1,0 +1,21 @@
+#services:
+#  app:
+#    image: 'load-file-aws-cloud:latest'
+##    build:
+##      context: .
+#    container_name: app
+#    depends_on:
+#      - postgres
+#    environment:
+#      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/FileBucket
+#      - SPRING_DATASOURCE_USERNAME=admin
+#      - SPRING_DATASOURCE_PASSWORD=admin
+#      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+#  postgres:
+#    image: 'postgres:12'
+#    environment:
+#      - 'POSTGRES_DB=FileBucket'
+#      - 'POSTGRES_PASSWORD=postgres'
+#      - 'POSTGRES_USER=admin'
+#    ports:
+#      - '5432'
