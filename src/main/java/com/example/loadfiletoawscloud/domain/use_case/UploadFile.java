@@ -22,7 +22,7 @@ public class UploadFile {
         //vérifier l'existance du fichier
         // vérifier la taille du fichier
         //autre traitement.
-        amazonClient.uploadFileToBucket(file.name(), FileUtils.bytesToFile(file.data(), file.name()), String.valueOf(file.fileNature()));
+        amazonClient.uploadFileToBucket(file.uuidAwsFile(), FileUtils.bytesToFile(file.data(), file.name()), String.valueOf(file.fileNature()));
         return portFile.uploadFile(file);
     }
 }

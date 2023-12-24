@@ -5,7 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
-import java.util.Date;
+import java.util.UUID;
 
 public class FileUtils{
 
@@ -31,6 +31,6 @@ public class FileUtils{
     //Need to replace all special characters with underscores + add timestamp to filename to make it unique
     public static String generateFileName(String fileName) {
         String name = fileName.replaceAll("[^a-zA-Z0-9.-]", "_");
-        return (new Date().getTime() + "_" + name);
+        return (UUID.randomUUID() + "_" + name);
     }
 }

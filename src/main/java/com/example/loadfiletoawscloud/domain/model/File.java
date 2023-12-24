@@ -4,29 +4,18 @@ import com.example.loadfiletoawscloud.util.FileNature;
 
 import java.util.Arrays;
 
-public record File(String name, String contentType, Long size, FileNature fileNature, byte[] data) {
+public record File(String name, String contentType, Long size, FileNature fileNature, byte[] data, String uuidAwsFile) {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         File file = (File) o;
-
-        if (!name.equals(file.name)) return false;
-        if (!contentType.equals(file.contentType)) return false;
-        if (!size.equals(file.size)) return false;
-        if (fileNature != file.fileNature) return false;
-        return Arrays.equals(data, file.data);
+        return name.equals(file.name);
     }
 
     @Override
     public int hashCode() {
-        int result = name.hashCode();
-        result = 31 * result + contentType.hashCode();
-        result = 31 * result + size.hashCode();
-        result = 31 * result + fileNature.hashCode();
-        result = 31 * result + Arrays.hashCode(data);
-        return result;
+        return name.hashCode();
     }
 
     @Override
@@ -37,6 +26,7 @@ public record File(String name, String contentType, Long size, FileNature fileNa
                 ", size=" + size +
                 ", fileNature=" + fileNature +
                 ", data=" + Arrays.toString(data) +
+                ", uuidAwsFile='" + uuidAwsFile + '\'' +
                 '}';
     }
 }

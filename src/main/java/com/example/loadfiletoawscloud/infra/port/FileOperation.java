@@ -13,5 +13,5 @@ public interface FileOperation {
 
     FileEntity get(String fileName) throws FileNotFoundException;
 
-    boolean fileExiste(String fileName);
+    //boolean fileExiste(String fileName);
 }

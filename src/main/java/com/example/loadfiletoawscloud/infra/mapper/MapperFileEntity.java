@@ -21,6 +21,7 @@ public class MapperFileEntity {
         fileEntity.setSize(file.size());
         fileEntity.setFileNature(file.fileNature());
         fileEntity.setData(file.data());
+        fileEntity.setUuidAwsFile(file.uuidAwsFile());
         return fileEntity;
     }
 
@@ -29,7 +30,8 @@ public class MapperFileEntity {
                 fileEntity.getContentType(),
                 fileEntity.getSize(),
                 fileEntity.getFileNature(),
-                fileEntity.getData()));
+                fileEntity.getData(),
+                fileEntity.getUuidAwsFile()));
         return Optional.of(file.orElse(null));
     }
 }

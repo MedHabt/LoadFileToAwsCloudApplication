@@ -27,8 +27,8 @@ public class RepositoryDatabase implements FileOperation {
                 .orElseThrow(()-> new FileNotFoundException("File "+fileName+" not found"));
     }
 
-    @Override
+    /*@Override
     public boolean fileExiste(String fileName) {
         return repositoryFile.existsByName(fileName);
-    }
+    }*/
 }

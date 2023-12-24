@@ -31,8 +31,8 @@ public class AdapterFile implements PortFile {
         return MapperFileEntity.mapFileEntityToFile(repositoryDatabase.get(fileName));
     }
 
-    @Override
+    /*@Override
     public boolean fileExiste(String fileName) {
         return repositoryDatabase.fileExiste(fileName);
-    }
+    }*/
 }

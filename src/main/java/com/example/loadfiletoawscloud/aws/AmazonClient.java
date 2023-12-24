@@ -10,7 +10,6 @@ import com.amazonaws.services.s3.model.DeleteObjectRequest;
 import com.amazonaws.services.s3.model.DeleteObjectsRequest;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.amazonaws.services.s3.model.S3Object;
-import com.example.loadfiletoawscloud.util.FileUtils;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -44,9 +43,8 @@ public class AmazonClient {
     }
 
     public void uploadFileToBucket(String fileName, File file, String folderToUpload) {
-        String generatedFileName = FileUtils.generateFileName(fileName);
-        logger.debug("Uploading file {} to {}", generatedFileName, folderToUpload);
-        s3client.putObject(new PutObjectRequest(bucketName, folderToUpload + "/" + generatedFileName, file));
+        logger.debug("Uploading file {} to {}", fileName, folderToUpload);
+        s3client.putObject(new PutObjectRequest(bucketName, folderToUpload + "/" + fileName, file));
     }
 
     public void deleteFileFromBucket(String filename, String folderName) {
@@ -90,5 +88,9 @@ public class AmazonClient {
         } catch (Exception e) {
             logger.error(Arrays.toString(e.getStackTrace()));
         }
+    }
+
+    public boolean fileExistInBucket(String fileName){
+        return s3client.doesObjectExist(bucketName,fileName);
     }
 }

@@ -29,4 +29,7 @@ public class FileEntity {
     @Lob
     @Column(name="data", nullable = false)
     private byte[] data;
+
+    @Column(name="uuid_aws", nullable = false)
+    private String uuidAwsFile;
 }
