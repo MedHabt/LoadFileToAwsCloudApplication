@@ -1,8 +1,10 @@
 package com.example.loadfiletoawscloud.util;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 import java.util.UUID;
@@ -26,6 +28,16 @@ public class FileUtils{
             return null;
         }
         return file;
+    }
+
+    public static byte[] convertInputStreamToByte(InputStream inputStream) throws IOException {
+        ByteArrayOutputStream result = new ByteArrayOutputStream();
+        byte[] buffer = new byte[1024];
+        int length;
+        while ((length = inputStream.read(buffer)) != -1) {
+            result.write(buffer, 0, length);
+        }
+        return result.toByteArray();
     }
 
     //Need to replace all special characters with underscores + add timestamp to filename to make it unique

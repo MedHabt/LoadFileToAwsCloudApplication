@@ -13,7 +13,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
@@ -58,7 +57,7 @@ public class FileRessource {
     }
 
     @GetMapping("/downloadFile/{fileName:.+}")
-    public ResponseEntity<ByteArrayResource> downloadFile(@PathVariable String fileName) throws FileNotFoundException {
+    public ResponseEntity<ByteArrayResource> downloadFile(@PathVariable String fileName) throws IOException {
         FileDto fileDto = FileMapper.mapFileToFileDto(downloadFile.excute(fileName));
         return ResponseEntity.ok()
                 .contentType(MediaType.parseMediaType(fileDto.contentType()))
